@@ -54,22 +54,22 @@ jobs:
  
     - name: Clean
 
-      run: dotnet clean Bluetooth.csproj
+      run: dotnet clean StepsCounter.csproj
  
     - name: Restore
 
-      run: dotnet restore Bluetooth.csproj
+      run: dotnet restore StepsCounter.csproj
  
     - name: Build Android
 
-      run: dotnet build Bluetooth.csproj -f net9.0-android -c Release
+      run: dotnet build StepsCounter.csproj -f net9.0-android -c Release
  
     
 
     - name: Publish Signed APK
       shell: pwsh
       run: |
-        dotnet publish Bluetooth.csproj `
+        dotnet publish StepsCounter.csproj `
           -f net9.0-android `
           -c Release `
           -p:AndroidPackageFormat=apk `
