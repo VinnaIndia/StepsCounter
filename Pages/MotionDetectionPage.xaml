@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StepsCounter.Pages.MotionDetectionPage"
+             xmlns:vm="clr-namespace:StepsCounter.ViewModels"
+             Title="MotionDetectionPage">
+    <ContentPage.BindingContext>
+        <vm:MotionDetectionViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid Padding="24">
+
+        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="32">
+
+            <!-- Tick / idle indicator -->
+            <Frame CornerRadius="100"
+                   WidthRequest="180"
+                   HeightRequest="180"
+                   HorizontalOptions="Center"
+                   Padding="0"
+                   HasShadow="False"
+                   BackgroundColor="{Binding CircleColor}">
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="{Binding MotionIcon}"
+                           FontSize="64"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Motion label -->
+            <Label Text="{Binding MotionLabel}"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   TextColor="{Binding LabelColor}"
+                   HorizontalOptions="Center"/>
+
+            <!-- Sensitivity slider -->
+            <VerticalStackLayout Spacing="6">
+                <Label Text="{Binding SensitivityLabel}"
+                       FontSize="13"
+                       TextColor="#6B7280"
+                       HorizontalOptions="Center"/>
+                <Slider Minimum="0.1"
+                        Maximum="3.0"
+                        Value="{Binding Threshold}"
+                        WidthRequest="240"
+                        HorizontalOptions="Center"/>
+                <Label Text="← More sensitive      Less sensitive →"
+                       FontSize="11"
+                       TextColor="#9CA3AF"
+                       HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+
+            <!-- Buttons in the middle -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="16">
+                <Button Text="Start"
+                        Command="{Binding StartCommand}"
+                        IsEnabled="{Binding CanStart}"
+                        BackgroundColor="#4F46E5"
+                        TextColor="White"
+                        CornerRadius="12"
+                        WidthRequest="130"
+                        HeightRequest="48"/>
+                <Button Text="Stop"
+                        Command="{Binding StopCommand}"
+                        IsEnabled="{Binding CanStop}"
+                        BackgroundColor="#EF4444"
+                        TextColor="White"
+                        CornerRadius="12"
+                        WidthRequest="130"
+                        HeightRequest="48"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+
+    </Grid>
+
+</ContentPage>
