@@ -1,78 +1,140 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StepsCounter.Pages.MotionDetectionPage"
              xmlns:vm="clr-namespace:StepsCounter.ViewModels"
-             Title="MotionDetectionPage">
+             x:Class="StepsCounter.Pages.MotionDetectionPage"
+             Title="Motion Detection"
+             BackgroundColor="#F8FAFC">
+
     <ContentPage.BindingContext>
         <vm:MotionDetectionViewModel />
     </ContentPage.BindingContext>
 
-    <Grid Padding="24">
+    <ScrollView>
+        <VerticalStackLayout Padding="25"
+                             Spacing="30"
+                             VerticalOptions="Center">
 
-        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="32">
-
-            <!-- Tick / idle indicator -->
-            <Frame CornerRadius="100"
-                   WidthRequest="180"
-                   HeightRequest="180"
-                   HorizontalOptions="Center"
-                   Padding="0"
-                   HasShadow="False"
-                   BackgroundColor="{Binding CircleColor}">
-                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                    <Label Text="{Binding MotionIcon}"
-                           FontSize="64"
-                           HorizontalOptions="Center"/>
-                </VerticalStackLayout>
-            </Frame>
-
-            <!-- Motion label -->
-            <Label Text="{Binding MotionLabel}"
-                   FontSize="22"
-                   FontAttributes="Bold"
-                   TextColor="{Binding LabelColor}"
-                   HorizontalOptions="Center"/>
-
-            <!-- Sensitivity slider -->
-            <VerticalStackLayout Spacing="6">
-                <Label Text="{Binding SensitivityLabel}"
-                       FontSize="13"
-                       TextColor="#6B7280"
+            <!-- Header -->
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Motion Detection"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="#111827"
                        HorizontalOptions="Center"/>
-                <Slider Minimum="0.1"
-                        Maximum="3.0"
-                        Value="{Binding Threshold}"
-                        WidthRequest="240"
-                        HorizontalOptions="Center"/>
-                <Label Text="← More sensitive      Less sensitive →"
-                       FontSize="11"
-                       TextColor="#9CA3AF"
+
+                <Label Text="Monitor movement in real time"
+                       FontSize="14"
+                       TextColor="#6B7280"
                        HorizontalOptions="Center"/>
             </VerticalStackLayout>
 
-            <!-- Buttons in the middle -->
-            <HorizontalStackLayout HorizontalOptions="Center" Spacing="16">
-                <Button Text="Start"
+            <!-- Motion Status Card -->
+            <Border StrokeThickness="2"
+                    Stroke="{Binding CircleColor}"
+                    StrokeShape="RoundRectangle 24"
+                    BackgroundColor="White"
+                    Padding="25"
+                    HorizontalOptions="Center">
+
+                <VerticalStackLayout Spacing="15"
+                                     HorizontalOptions="Center">
+
+                    <!-- Circular Indicator -->
+                    <Border WidthRequest="160"
+                            HeightRequest="160"
+                            StrokeThickness="6"
+                            Stroke="{Binding CircleColor}"
+                            BackgroundColor="{Binding CircleColor}"
+                            StrokeShape="RoundRectangle 80"
+                            HorizontalOptions="Center">
+
+                        <Grid>
+                            <Label Text="{Binding MotionIcon}"
+                                   FontSize="70"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+
+                    </Border>
+
+                    <Label Text="{Binding MotionLabel}"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="{Binding LabelColor}"
+                           HorizontalOptions="Center"/>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- Sensitivity Card -->
+            <Border Stroke="#E5E7EB"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 20"
+                    BackgroundColor="White"
+                    Padding="20">
+
+                <VerticalStackLayout Spacing="15">
+
+                    <Label Text="Sensitivity"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#111827"/>
+
+                    <Label Text="{Binding SensitivityLabel}"
+                           FontSize="13"
+                           TextColor="#6B7280"/>
+
+                    <Slider Minimum="0.1"
+                            Maximum="3.0"
+                            Value="{Binding Threshold}"
+                            ThumbColor="#4F46E5"
+                            MinimumTrackColor="#4F46E5"/>
+
+                    <Grid ColumnDefinitions="Auto,* ,Auto">
+                        <Label Grid.Column="0"
+                               Text="High"
+                               FontSize="12"
+                               TextColor="#9CA3AF"/>
+
+                        <Label Grid.Column="2"
+                               Text="Low"
+                               FontSize="12"
+                               TextColor="#9CA3AF"/>
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- Action Buttons -->
+            <Grid ColumnDefinitions="*,*"
+                  ColumnSpacing="15">
+
+                <Button Grid.Column="0"
+                        Text="Start Monitoring"
                         Command="{Binding StartCommand}"
                         IsEnabled="{Binding CanStart}"
+                        HeightRequest="55"
+                        CornerRadius="14"
+                        FontAttributes="Bold"
                         BackgroundColor="#4F46E5"
-                        TextColor="White"
-                        CornerRadius="12"
-                        WidthRequest="130"
-                        HeightRequest="48"/>
-                <Button Text="Stop"
+                        TextColor="White"/>
+
+                <Button Grid.Column="1"
+                        Text="Stop"
                         Command="{Binding StopCommand}"
                         IsEnabled="{Binding CanStop}"
+                        HeightRequest="55"
+                        CornerRadius="14"
+                        FontAttributes="Bold"
                         BackgroundColor="#EF4444"
-                        TextColor="White"
-                        CornerRadius="12"
-                        WidthRequest="130"
-                        HeightRequest="48"/>
-            </HorizontalStackLayout>
+                        TextColor="White"/>
+
+            </Grid>
 
         </VerticalStackLayout>
-
-    </Grid>
+    </ScrollView>
 
 </ContentPage>
