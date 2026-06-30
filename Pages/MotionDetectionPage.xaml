@@ -6,6 +6,7 @@
              Title="Motion Detection"
              >
 
+
     <ContentPage.BindingContext>
         <vm:MotionDetectionViewModel />
     </ContentPage.BindingContext>
