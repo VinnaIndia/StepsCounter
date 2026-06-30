@@ -2,9 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:StepsCounter.ViewModels"
-             x:Class="StepsCounter.Pages.MotionDetectionPage"
-             Title="Motion Detection"
-             BackgroundColor="#F8FAFC">
+             x:Class="StepsCounter.Pages.MotionDetectionPage">
 
     <ContentPage.BindingContext>
         <vm:MotionDetectionViewModel />
