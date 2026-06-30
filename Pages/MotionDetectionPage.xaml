@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:StepsCounter.ViewModels"
              x:Class="StepsCounter.Pages.MotionDetectionPage"
              Title="Motion Detection"
-             BackgroundColor="#F8FAFC">
+             >
 
     <ContentPage.BindingContext>
         <vm:MotionDetectionViewModel />
@@ -33,7 +33,7 @@
             <Border StrokeThickness="2"
                     Stroke="{Binding CircleColor}"
                     StrokeShape="RoundRectangle 24"
-                    BackgroundColor="White"
+                    BackgroundColor="Ivory"
                     Padding="25"
                     HorizontalOptions="Center">
 
