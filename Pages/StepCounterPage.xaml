@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StepsCounter.Pages.StepCounterPage"
+             Title="StepCounterPage">
+
+    <Grid Padding="24">
+        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="32">
+
+            <!-- Step icon + count -->
+            <Frame BackgroundColor="#EEF2FF"
+                   CornerRadius="100"
+                   WidthRequest="180"
+                   HeightRequest="180"
+                   HorizontalOptions="Center"
+                   Padding="0"
+                   HasShadow="False">
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="🚶" FontSize="52" HorizontalOptions="Center"/>
+                    <Label Text="{Binding StepCount}"
+                           FontSize="40"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           TextColor="ForestGreen"/>
+                    <Label Text="steps"
+                           FontSize="14"
+                           TextColor="#6B7280"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Status label -->
+            <Label Text="{Binding StatusMessage}"
+                   FontSize="16"
+                   TextColor="{Binding StatusColor}"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"/>
+
+            <!-- Not supported warning -->
+            <Label Text="Pedometer not supported on this device"
+                   FontSize="13"
+                   TextColor="#EF4444"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding IsNotSupported}"/>
+
+            <!-- Buttons in the middle -->
+            <VerticalStackLayout HorizontalOptions="Center" Spacing="12">
+
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="16">
+                    <Button Text="Start"
+                Command="{Binding StartCommand}"
+                IsEnabled="{Binding CanStart}"
+                BackgroundColor="OrangeRed"
+                TextColor="White"
+                CornerRadius="12"
+                WidthRequest="120"
+                HeightRequest="48"/>
+                    <Button Text="Stop"
+                Command="{Binding StopCommand}"
+                IsEnabled="{Binding CanStop}"
+                BackgroundColor="#EF4444"
+                TextColor="White"
+                CornerRadius="12"
+                WidthRequest="120"
+                HeightRequest="48"/>
+                </HorizontalStackLayout>
+
+                <Button Text="Reset"
+            Command="{Binding ResetCommand}"
+            BackgroundColor="Ivory"
+            TextColor="#374151"
+            CornerRadius="12"
+            WidthRequest="256"
+            HeightRequest="48"
+            HorizontalOptions="Center"/>
+
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>
