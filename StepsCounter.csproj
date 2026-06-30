@@ -63,7 +63,13 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.8" />
 	</ItemGroup>
-
+<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+	<AndroidKeyStore>True</AndroidKeyStore>
+	<AndroidSigningKeyStore>myapp.keystore</AndroidSigningKeyStore>
+	<AndroidSigningKeyAlias>MyAppkey</AndroidSigningKeyAlias>
+	<AndroidSigningKeyPass>Loukya</AndroidSigningKeyPass>
+    <AndroidSigningStorePass>Loukya</AndroidSigningStorePass>
+</PropertyGroup>
 	<ItemGroup>
 	  <MauiXaml Update="Pages\MotionDetectionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>

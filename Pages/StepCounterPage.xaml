@@ -21,7 +21,7 @@
                            FontSize="40"
                            FontAttributes="Bold"
                            HorizontalOptions="Center"
-                           TextColor="#3730A3"/>
+                           TextColor="ForestGreen"/>
                     <Label Text="steps"
                            FontSize="14"
                            TextColor="#6B7280"
@@ -37,39 +37,44 @@
                    FontAttributes="Bold"/>
 
             <!-- Not supported warning -->
-            <Label Text="⚠️ Pedometer not supported on this device"
+            <Label Text="Pedometer not supported on this device"
                    FontSize="13"
                    TextColor="#EF4444"
                    HorizontalOptions="Center"
                    IsVisible="{Binding IsNotSupported}"/>
 
             <!-- Buttons in the middle -->
-            <HorizontalStackLayout HorizontalOptions="Center" Spacing="16">
-                <Button Text="Start"
-                        Command="{Binding StartCommand}"
-                        IsEnabled="{Binding CanStart}"
-                        BackgroundColor="#4F46E5"
-                        TextColor="White"
-                        CornerRadius="12"
-                        WidthRequest="120"
-                        HeightRequest="48"/>
-                <Button Text="Stop"
-                        Command="{Binding StopCommand}"
-                        IsEnabled="{Binding CanStop}"
-                        BackgroundColor="#EF4444"
-                        TextColor="White"
-                        CornerRadius="12"
-                        WidthRequest="120"
-                        HeightRequest="48"/>
-                <Button Text="Reset"
-                        Command="{Binding ResetCommand}"
-                        BackgroundColor="#E5E7EB"
-                        TextColor="#374151"
-                        CornerRadius="12"
-                        WidthRequest="100"
-                        HeightRequest="48"/>
-            </HorizontalStackLayout>
+            <VerticalStackLayout HorizontalOptions="Center" Spacing="12">
 
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="16">
+                    <Button Text="Start"
+                Command="{Binding StartCommand}"
+                IsEnabled="{Binding CanStart}"
+                BackgroundColor="OrangeRed"
+                TextColor="White"
+                CornerRadius="12"
+                WidthRequest="120"
+                HeightRequest="48"/>
+                    <Button Text="Stop"
+                Command="{Binding StopCommand}"
+                IsEnabled="{Binding CanStop}"
+                BackgroundColor="#EF4444"
+                TextColor="White"
+                CornerRadius="12"
+                WidthRequest="120"
+                HeightRequest="48"/>
+                </HorizontalStackLayout>
+
+                <Button Text="Reset"
+            Command="{Binding ResetCommand}"
+            BackgroundColor="Ivory"
+            TextColor="#374151"
+            CornerRadius="12"
+            WidthRequest="256"
+            HeightRequest="48"
+            HorizontalOptions="Center"/>
+
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </Grid>
 
